@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { PrismaClient } from '@prisma/client'
+import { revalidatePath } from 'next/cache'
 
 const prisma = new PrismaClient()
 
@@ -13,6 +14,9 @@ export async function POST(request: Request) {
         message,
       },
     })
+
+    // Revalidate the messages path after a new message is created
+    revalidatePath('/messages')
 
     return NextResponse.json(newMessage, { status: 201 })
   } catch (error) {
