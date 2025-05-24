@@ -10,12 +10,10 @@ export const metadata: Metadata = {
     default: "PG-Weelll",
     template: "%s | PGWEB L"
   },
-  description: "Kesan dan pesan dari para asisten PGWEB L untuk para peserta yang telah menyelesaikan 12 acara.",
-  keywords: ["PGWEB L", "Kesan Pesan", "Acara 12", "Asisten PGWEB"],
   authors: [{ name: "Asbi, Alip, Diva, Della" }],
   openGraph: {
-    title: "Kesan Pesan PGWEB L - Acara 12",
-    description: "Kesan dan pesan dari para asisten PGWEB L untuk para peserta yang telah menyelesaikan 12 acara.",
+    title: "Kesan Pesan PGWEBL ",
+    description: "Kesan dan pesan dari para asisten PGWEB L untuk klean",
     type: "website",
     images: [
       {
@@ -28,8 +26,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kesan Pesan PGWEB L - Acara 12",
-    description: "Kesan dan pesan dari para asisten PGWEB L untuk para peserta yang telah menyelesaikan 12 acara.",
+    title: "Kesan Pesan PGWEBL",
+    description: "Kesan dan pesan dari para asisten PGWEB L untuk klean",
     images: ["/astronaut.png"],
   },
   viewport: {
