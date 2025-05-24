@@ -36,7 +36,7 @@ export function MessageForm() {
 
       setName('')
       setMessage('')
-    } catch (error) {
+    } catch {
       toast({
         title: "Error",
         description: "Maaf, terjadi kesalahan. Silakan coba lagi.",

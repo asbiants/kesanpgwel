@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { PrismaClient } from '@prisma/client';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import Link from 'next/link';
 
 const prisma = new PrismaClient();
 
@@ -44,9 +45,9 @@ export default async function MessageDetailPage({ params }: { params: Promise<{ 
       </Card>
 
       <div className="mt-8 text-center">
-        <a href="/messages" className="text-purple-600 hover:underline">
+        <Link href="/messages" className="text-purple-600 hover:underline">
           &larr; Kembali ke Daftar Pesan
-        </a>
+        </Link>
       </div>
     </div>
   );
