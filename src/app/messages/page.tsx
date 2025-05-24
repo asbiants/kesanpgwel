@@ -6,34 +6,24 @@ import {Table,
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { PrismaClient, Message } from '@prisma/client'; // Import Message type
+import { Message } from '@prisma/client'; // Import Message type
 import Link from 'next/link'; // Import Link untuk navigasi
 import { Eye } from 'lucide-react'; // Import ikon Eye
-
-// Inisialisasi Prisma Client di sini, atau gunakan instance dari lib/prisma
-// const prisma = new PrismaClient();
+import { prisma } from '@/lib/prisma'; // Import singleton prisma instance
 
 async function getMessages(): Promise<Message[]> {
-  // Fetch data directly in the server component
-  // This is a simplified example, in a real app, consider using a separate data fetching layer or API route
   try {
-    // If you have a lib/prisma.ts file, import and use that instance instead
-    const prisma = new PrismaClient();
     const messages = await prisma.message.findMany({
       orderBy: {
         createdAt: 'desc',
       },
     });
-    // It's better to use the API route you created above for client-side fetching
-    // but for a simple server component, direct fetching is possible.
-    // For client components fetching, use the /api/messages/getall route.
     return messages;
   } catch (error) {
     console.error('Failed to fetch messages in component:', error);
     return []; // Return empty array on error
   }
 }
-
 
 export default async function MessagesPage() {
   const messages = await getMessages();

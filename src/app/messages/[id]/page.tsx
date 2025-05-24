@@ -1,10 +1,8 @@
 import { notFound } from 'next/navigation';
-import { PrismaClient } from '@prisma/client';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Link from 'next/link';
-
-const prisma = new PrismaClient();
+import { prisma } from '@/lib/prisma';
 
 export default async function MessageDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const messageId = (await params).id;
