@@ -54,6 +54,7 @@ export default async function MessagesPage() {
                     day: 'numeric',
                     hour: '2-digit',
                     minute: '2-digit',
+                    timeZone: 'Asia/Jakarta',
                   })}
                 </TableCell>
                 <TableCell className="text-center">
