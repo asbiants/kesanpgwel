@@ -2,8 +2,14 @@
 import { MessageForm } from '@/components/MessageForm'
 import Image from 'next/image'
 import { TypeAnimation } from 'react-type-animation'
+import { motion } from 'framer-motion'
+import { useInView } from 'framer-motion'
+import { useRef } from 'react'
 
 export default function Home() {
+  const formRef = useRef(null)
+  const isInView = useInView(formRef, { once: true, margin: "-150px" })
+
   return (
     <main className="min-h-screen relative overflow-hidden">
       <video
@@ -30,9 +36,9 @@ export default function Home() {
                 sequence={[
                   'Selamat Guys! Kalian sudah sampai tahap ini, kurang lebih 12 acara sudah kalian lewati. Capek, iya. Seru? juga iya KAYAKNYA WKWKWK. Tapi yang paling penting… udah kelar! Thanks buat semua yang udah saling bantu, semoga next-nya makin kompak dan jangan sering typo yaaa 😅',
                   1000,
-                  'Selamat Guys! Kalian sudah sampai tahap ini, kurang lebih 12 acara sudah kalian lewati. Capek, iya. Seru? juga iya KAYAKNYA WKWKWK. Tapi yang paling penting… udah kelar! Thanks buat semua yang udah saling bantu, semoga next-nya makin kompak dan jangan sering typo yaaa 😅\n\nDari kami asisten (asbi, della, difa, alip) memohon maaf sebesar - besarnya ya kalau selama mengampu dan membersamai kalian masih banyak kurangnya. Kami juga manusia biasaa (ANJAAAYYY)... jadi kami juga memiliki kekurangan, (Kami bukan nabi boyyy....), haarap di maklumi ya guys hehehe... Semangat buat kalian semua. semoga dilancarkan semua urusannya... project, PKL dan lainnya... Sekian dari kami yaa,',
+                  'Selamat Guys! Kalian sudah sampai tahap ini, kurang lebih 12 acara sudah kalian lewati. Capek, iya. Seru? juga iya KAYAKNYA WKWKWK. Tapi yang paling penting… udah kelar! Thanks buat semua yang udah saling bantu, semoga next-nya makin kompak dan jangan sering typo yaaa 😅\n\nDari kami asisten (asbi, della, difa, alip) memohon maaf sebesar - besarnya ya kalau selama mengampu dan membersamai kalian masih banyak kurangnya. Kami juga manusia biasaa ANJAAAYYY... jadi kami juga memiliki kekurangan, Kami bukan nabi boyyy...., haarap di maklumi ya guys hehehe... Semangat buat kalian semua. semoga dilancarkan semua urusannya... project, PKL dan lainnya... Sekian dari kami yaa,',
                   1000,
-                  'Selamat Guys! Kalian sudah sampai tahap ini, kurang lebih 12 acara sudah kalian lewati. Capek, iya. Seru? juga iya KAYAKNYA WKWKWK. Tapi yang paling penting… udah kelar! Thanks buat semua yang udah saling bantu, semoga next-nya makin kompak dan jangan sering typo yaaa 😅\n\nDari kami asisten (asbi, della, difa, alip) memohon maaf sebesar - besarnya ya kalau selama mengampu dan membersamai kalian masih banyak kurangnya. Kami juga manusia biasaa (ANJAAAYYY)... jadi kami juga memiliki kekurangan, (Kami bukan nabi boyyy....), haarap di maklumi ya guys hehehe... Semangat buat kalian semua. semoga dilancarkan semua urusannya... project, PKL dan lainnya... Sekian dari kami yaa,\n\nRegards\nAsbi, Alip, Diva, Della',
+                  'Selamat Guys! Kalian sudah sampai tahap ini, kurang lebih 12 acara sudah kalian lewati. Capek, iya. Seru? juga iya KAYAKNYA WKWKWK. Tapi yang paling penting… udah kelar! Thanks buat semua yang udah saling bantu, semoga next-nya makin kompak dan jangan sering typo yaaa 😅\n\nDari kami asisten (asbi, della, difa, alip) memohon maaf sebesar - besarnya ya kalau selama mengampu dan membersamai kalian masih banyak kurangnya. Kami juga manusia biasaa ANJAAAYYY... jadi kami juga memiliki kekurangan, Kami bukan nabi boyyy...., haarap di maklumi ya guys hehehe... Semangat buat kalian semua. semoga dilancarkan semua urusannya... project, PKL dan lainnya... Sekian dari kami yaa,\n\nRegards\nAsbi, Alip, Diva, Della',
                 ]}
                 wrapper="p"
                 speed={50}
@@ -43,12 +49,41 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-12 pt-8 border-t border-purple-200">
-            <h2 className="text-3xl font-bold text-center text-purple-800 mb-8">
+          <motion.div 
+            ref={formRef}
+            initial={{ opacity: 0, y: 100 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+            transition={{ 
+              duration: 1.2,
+              ease: [0.4, 0, 0.2, 1],
+              delay: 0.1
+            }}
+            className="mt-12 pt-8 border-t border-purple-200"
+          >
+            <motion.h2 
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ 
+                duration: 0.8,
+                ease: [0.4, 0, 0.2, 1],
+                delay: 0.3
+              }}
+              className="text-3xl font-bold text-center text-purple-800 mb-8"
+            >
               Kesan Pesanmu Dong Guys!
-            </h2>
-            <MessageForm />
-          </div>
+            </motion.h2>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ 
+                duration: 0.8,
+                ease: [0.4, 0, 0.2, 1],
+                delay: 0.5
+              }}
+            >
+              <MessageForm />
+            </motion.div>
+          </motion.div>
         </div>
       </div>
 
